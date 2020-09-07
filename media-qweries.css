@@ -1,0 +1,132 @@
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 25px;
+    }
+}
+
+.top_menu {
+    background: #87c5ff;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
+}
+
+.sideLeft {
+    background: #81ffb6;
+    width: 30%;
+    height: 354px;
+    margin-top: 5px;
+    padding: 1px 0;
+    float: left;
+}
+
+.content {
+    background: #fefffd;
+    width: 69%;
+    margin-top: 5px;
+    height: 355px;
+    float: right;
+}
+
+
+.footer {
+    background: #91a43c;
+    width: 100%;
+    margin-top: 5px;
+    height: 70px;
+}
+
+.footer2 {
+    background: #91a43c;
+    width: 100%;
+    margin-top: 5px;
+    height: 70px;
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+}
+
+.wrapper  {
+	width: 450px;
+}
+
+.header {
+	background: #86ebff;
+	height: 100px;
+	border-radius: 3px;
+}
+
+.top_menu {
+	background: #2ca9b7;
+	margin-top: 4px;
+	height: 25px;
+}
+
+.sideLeft {
+	background: #5ab37f;
+	width: 100%;
+	margin-top: 4px;
+	float: none;
+}
+
+<div class="sideLeft">
+	<div class="bar"></div>
+	<div class="bar"></div>
+	<div class="bar"></div>
+</div>
+
+.bar {
+    background: #a5fdcf;
+    border-radius: 5px;
+    border: 1px solid #129d52;
+    margin: 3px auto;
+    width: 95%;
+    height: 110px;
+}
+
+.footer {
+	background: #758430;
+	margin-top: 4px;
+	height: 35px;
+}
+
+<div class="knopka">
+	<div class="lan"></div>
+	<div class="lan"></div>
+	<div class="lan"></div>
+</div>
+.top_menu {
+    background: #87c5ff;
+    width: 100%;
+    margin-top: 5px;
+    height: 50px;
+    position: relative;
+}
+.knopka {
+    display: none;
+    width:32px;
+    height: 21px;
+    top: 2px;
+    left: 6px;
+    background: #6d6e6d;
+    border-radius: 2px;
+    position: absolute;
+}
+.lan {
+    width: 29px;
+    height: 3px;
+    background: #2b2828;
+    margin: 3px auto;
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+}
+
+.wrapper  {
+	width: 320px;
+}
+
