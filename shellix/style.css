@@ -72,6 +72,10 @@ p {
 }
 
 
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
 /* Nav
 ===================*/
 
@@ -197,7 +201,8 @@ p {
 }
 
 .features__icon {
-    margin-bottom: 25px;
+    margin-bottom: 50px 50px;
+    
 }
 
 .features__title {
@@ -810,8 +815,9 @@ p {
     }
 }
 
+.green{
+color:green; 
 
-
-
+}
 
 
