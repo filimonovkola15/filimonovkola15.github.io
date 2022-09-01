@@ -11,6 +11,8 @@ body{
 }
 
 .background {
+  position: relative;
+  overflow: hidden;
   border-radius: 10px;
   background-color: rgb(89, 125, 163);
   margin-top: 25px;
@@ -19,6 +21,15 @@ body{
   max-width: 40%;
   height: 130px;
   z-index: 2;
+}
+
+.photo{
+ border-radius: 100px; /* Радиус скругления */
+ width: 110px;
+ height: 110px;
+ margin-top: 10px;
+ margin-left: 10px;
+  /*Параметры теней */
 }
 
 @media only screen and (max-device-width: 480px) {
