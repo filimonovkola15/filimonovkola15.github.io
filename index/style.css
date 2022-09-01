@@ -1,0 +1,463 @@
+body{
+    margin: 0;
+    font-family: 'PT Serif', serif;
+    font-size: 14px;
+    color:#ffffff 
+        
+}
+
+.container {
+     position: relative;
+}
+
+.background {
+   position: relative;
+  border-radius: 10px;
+  background-color: rgb(89, 125, 163);
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 425px;
+  height: 130px;
+  z-index: 2;
+}
+
+
+
+a.button14 {
+  position: absolute;
+           left: 300px;
+           top: 115px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+    display: inline-block;
+  text-shadow: 1px 1px #fff;
+  text-decoration: none;
+  padding: .6em 2em;
+  border: 1px solid #aaa;
+  border-radius: 100px;
+  outline: none;
+  background: #d6dbbf no-repeat;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#feffe8, #d6dbbf);
+  background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+  background-size: 1px 100%, 1px 100%, auto auto;
+  overflow: hidden;
+}
+a.button14:after {
+  content: "\bb";
+  position: relative;
+  bottom: 18px;
+  display: inline-block;
+  margin-left: 3.8em;
+  vertical-align: middle;
+  font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+  font-weight: 700;
+  font-size: 140%;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+a.button14:hover {
+  background-color: #fdfd9f;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#fffce7, #fdfd9f);
+}
+a.button14:active:after {
+  bottom: -1.2em;
+  transition: .3s;
+}
+
+
+a.button15 {
+  position: absolute;
+           left: 300px;
+           top: 320px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+    display: inline-block;
+  text-shadow: 1px 1px #fff;
+  text-decoration: none;
+  padding: .6em 2em;
+  border: 1px solid #aaa;
+  border-radius: 100px;
+  outline: none;
+  background: #d6dbbf no-repeat;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#feffe8, #d6dbbf);
+  background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+  background-size: 1px 100%, 1px 100%, auto auto;
+  overflow: hidden;
+}
+a.button15:after {
+  content: "\bb";
+  position: relative;
+  bottom: 18px;
+  display: inline-block;
+  margin-left: 3.8em;
+  vertical-align: middle;
+  font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+  font-weight: 700;
+  font-size: 140%;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+a.button15:hover {
+  background-color: #fdfd9f;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#fffce7, #fdfd9f);
+}
+a.button15:active:after {
+  bottom: -1.2em;
+  transition: .3s;
+}
+
+
+a.button16 {
+  position: absolute;
+           left: 300px;
+           top: 520px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+    display: inline-block;
+  text-shadow: 1px 1px #fff;
+  text-decoration: none;
+  padding: .6em 2em;
+  border: 1px solid #aaa;
+  border-radius: 100px;
+  outline: none;
+  background: #d6dbbf no-repeat;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#feffe8, #d6dbbf);
+  background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+  background-size: 1px 100%, 1px 100%, auto auto;
+  overflow: hidden;
+}
+
+a.button16:after {
+  content: "\bb";
+  position: relative;
+  bottom: 18px;
+  display: inline-block;
+  margin-left: 3.8em;
+  vertical-align: middle;
+  font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+  font-weight: 700;
+  font-size: 140%;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+a.button15:hover {
+  background-color: #fdfd9f;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#fffce7, #fdfd9f);
+}
+a.button16:active:after {
+  bottom: -1.2em;
+  transition: .3s;
+}
+
+a.button17 {
+  position: absolute;
+           left: 300px;
+           top: 720px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+    display: inline-block;
+  text-shadow: 1px 1px #fff;
+  text-decoration: none;
+  padding: .6em 2em;
+  border: 1px solid #aaa;
+  border-radius: 100px;
+  outline: none;
+  background: #d6dbbf no-repeat;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#feffe8, #d6dbbf);
+  background-position: calc(100% - 2.7em) 0, calc(100% - 2.7em + 1px) 0, 0 0;
+  background-size: 1px 100%, 1px 100%, auto auto;
+  overflow: hidden;
+}
+
+a.button17:after {
+  content: "\bb";
+  position: relative;
+  bottom: 18px;
+  display: inline-block;
+  margin-left: 3.8em;
+  vertical-align: middle;
+  font-family: "Times","Times New Roman","serif","sans-serif","EmojiSymbols";
+  font-weight: 700;
+  font-size: 140%;
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+a.button17:hover {
+  background-color: #fdfd9f;
+  background-image:
+   linear-gradient(to left, #aaa, #aaa),
+   linear-gradient(to left, #feffe8, #feffe8),
+   linear-gradient(#fffce7, #fdfd9f);
+}
+a.button17:active:after {
+  bottom: -1.2em;
+  transition: .3s;
+}
+
+
+.photo{
+    position: absolute;
+           left: 25px;
+           top: 105px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.photo_1{
+    position: absolute;
+           left: 25px;
+           top: 305px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+.photo_2{
+    position: absolute;
+           left: 25px;
+           top: 505px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.photo_4{
+    position: absolute;
+           left: 25px;
+           top: 705px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav{
+  position: absolute;
+     
+           left:150px;
+           top: 105px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav2{
+ color: rgb(250, 128, 114);
+    position: absolute;
+    
+     
+           left:150px;
+           top: 135px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav3{
+position: absolute;
+    
+     
+           left:150px;
+           top: 161px;
+  width: 300px;
+  height: 60px;
+  z-index: 10;
+  bottom: 40px;
+  font-size: 60px
+   vertical-align: middle;
+  
+  
+}
+/*текст*/
+.nav14{
+  position: absolute;
+     
+           left:150px;
+           top: 305px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav_5{
+ 
+    position: absolute;
+    color: rgb(250, 128, 114);
+     
+           left:150px;
+           top: 335px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav_6{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 361px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+.nav_7{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 381px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+
+.nav_16{
+  position: absolute;
+     
+           left:150px;
+           top: 505px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+
+.nav_20{
+ 
+    position: absolute;
+    color: rgb(250, 128, 114);
+     
+           left:150px;
+           top: 535px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+.nav_v{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 561px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+
+.nav_101{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 581px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+
+.nav102{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 700px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+
+
+.nav_103{
+ 
+    position: absolute;
+    color: rgb(250, 128, 114);
+     
+           left:150px;
+           top: 730px;
+  width: 130px;
+  height: 40px;
+  z-index: 7;
+}
+
+.nav_104{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 760px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+  
+
+.nav_105{
+text-indent: 3px;
+    position: absolute;
+    
+     
+           left:150px;
+           top: 780px;
+  width: 300px;
+  height: 40px;
+  z-index: 10;
+  bottom: 20px;
+  font-size: 60px
+   vertical-align: middle;
+  }
+    
+.wrapper  {
+	width: 320px;
+}
+
+
