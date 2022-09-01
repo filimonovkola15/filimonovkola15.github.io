@@ -2,7 +2,7 @@ body{
     margin: 0;
     font-family: 'PT Serif', serif;
     font-size: 14px;
-    color:#ffffff 
+    background-color:#FFC0CB
         
 }
 
@@ -33,6 +33,10 @@ body{
  margin-bottom: 10px;
   /*Параметры теней */
 }
+.text{
+position: flex;
+}
+
 
 @media only screen and (max-device-width: 480px) {
   .background {
