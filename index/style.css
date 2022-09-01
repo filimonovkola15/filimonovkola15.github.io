@@ -14,7 +14,7 @@ body{
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: rgb(89, 125, 163);
+  background-color: #00BFFF;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
@@ -25,17 +25,19 @@ body{
 
 .photo{
  border-radius: 100px; /* Радиус скругления */
- width: 110px;
- height: 110px;
- margin-top: 10px;
- margin-left: 10px;
+ border: 10px solid #FFFDD0;
+ width: 100px;
+ height: 100px;
+ margin-top: 5px;
+ margin-left: 5px;
+ margin-bottom: 10px;
   /*Параметры теней */
 }
 
 @media only screen and (max-device-width: 480px) {
   .background {
   border-radius: 10px;
-  background-color: rgb(89, 125, 163);
+  background-color: #00BFFF;
   margin-top: 25px;
   margin-left: auto;
   margin-right: auto;
