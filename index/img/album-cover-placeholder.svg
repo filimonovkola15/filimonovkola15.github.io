@@ -1,0 +1,8 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" fill="#333333"/>
+  <circle cx="50" cy="50" r="30" fill="#6666cc" opacity="0.3"/>
+  <circle cx="50" cy="50" r="20" fill="#6666cc" opacity="0.5"/>
+  <circle cx="50" cy="50" r="10" fill="#6666cc" opacity="0.7"/>
+  <circle cx="50" cy="50" r="3" fill="#6666cc"/>
+  <text x="50" y="85" text-anchor="middle" fill="#cccccc" font-family="Arial, sans-serif" font-size="8">Album Cover</text>
+</svg> 

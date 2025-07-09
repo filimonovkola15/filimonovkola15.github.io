@@ -1,32 +1,778 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap" rel="stylesheet"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Delivery - Продвигайте свою музыку с нами</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
+    <!-- Skip link for accessibility -->
+    <a href="#hero" class="skip-link">Перейти к основному содержанию</a>
 
-    <div class="background">
-        <img src="image\qqq.jpg" alt="" class="photo">
-        <h1 class="text">sova lite</h1>    
-    </div>
-    <div class="background">
-        <img src="image\qqq.jpg" alt="" class="photo"></div>        
-    </div>
-    <div class="background">
-        <img src="image\qqq.jpg" alt="" class="photo"></div>        
-    </div>
-    <div class="background">
-        <img src="image\qqq.jpg" alt="" class="photo"></div>        
-    </div>
-    <div class="background">
-        <img src="image\qqq.jpg" alt="" class="photo"></div>        
-    </div>
-    
-  </div>
+    <!-- Navigation -->
+    <nav class="navigation" role="navigation" aria-label="Основная навигация">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="brand-text">Sound Delivery</span>
+            </div>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#hero" class="nav-link" role="menuitem">Главная</a></li>
+                <li role="none"><a href="#services" class="nav-link" role="menuitem">Сервисы</a></li>
+                <li role="none"><a href="#platforms" class="nav-link" role="menuitem">Платформы</a></li>
+                <li role="none"><a href="#dashboard" class="nav-link" role="menuitem">Панель</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">Контакты</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="auth-btn signin" type="button">Вход</button>
+                <button class="auth-btn signup" type="button">Регистрация</button>
+            </div>
+            <button class="mobile-toggle" type="button" aria-label="Открыть мобильное меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Продвигайте свою музыку с нами</h1>
+                <p class="hero-description">
+                    Мы поможем вашей музыке добраться до самых дальних уголков мира через наших партнеров и платформы.
+                </p>
+                <button class="cta-primary">Начать продвижение</button>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <!-- Power Button -->
+                    <div class="phone-power-button"></div>
+
+                    <!-- Volume Buttons -->
+                    <div class="phone-volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+
+                    <div class="phone-screen">
+                        <!-- Status Bar -->
+                        <div class="phone-status-bar">
+                            <div class="phone-status-left">
+                                <span>9:41</span>
+                            </div>
+                            <div class="phone-status-right">
+                                <span>📶</span>
+                                <span>📶</span>
+                                <span>🔋</span>
+                            </div>
+                        </div>
+
+                        <!-- App Interface -->
+                        <div class="app-interface">
+                            <div class="app-logo"><!--SOUNDDELIVERY-->
+                                SOUND DELIVERY
+                            </div>
+                            <div class="app-tagline">Продвигайте свою музыку</div>
+
+                            <div class="app-stats">
+                                <div class="stat-item-phone">
+                                    <span class="stat-number">150+</span>
+                                    <span class="stat-label">Платформы</span>
+                                </div>
+                                <div class="stat-item-phone">
+                                    <span class="stat-number">24h</span>
+                                    <span class="stat-label">Релиз</span>
+                                </div>
+                                <div class="stat-item-phone">
+                                    <span class="stat-number">0%</span>
+                                    <span class="stat-label">Комиссия</span>
+                                </div>
+                            </div>
+
+                            <div class="app-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">🎵</div>
+                                    <div class="feature-text">Дистрибуция на все платформы</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">📊</div>
+                                    <div class="feature-text">Аналитика в реальном времени</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">💰</div>
+                                    <div class="feature-text">Мгновенные выплаты</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Home Indicator -->
+                        <div class="phone-home-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section" id="platforms">
+        <div class="section-container">
+            <h2 class="section-title">Успешное сотрудничество с ведущими платформами</h2>
+            <div class="platforms-grid">
+                <div class="platform-item">
+                    <img src="img/spotify.png" alt="Spotify" class="platform-logo">
+                    <span>Spotify</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/apple-logo.png" alt="Apple Music" class="platform-logo">
+                    <span>Apple Music</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/tiktok-icon-logo.wine.png" alt="TikTok" class="platform-logo">
+                    <span>TikTok</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/deezer.png" alt="Deezer" class="platform-logo">
+                    <span>Deezer</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/shazam-logo.png" alt="Shazam" class="platform-logo">
+                    <span>Shazam</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/vk.png" alt="Instagram" class="platform-logo">
+                    <span>VK Музыка</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/yandex.png" alt="Instagram" class="platform-logo">
+                    <span>Яндекс Музыка</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/zvuk.png" alt="Instagram" class="platform-logo">
+                    <span>Звук</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/mts.png" alt="Instagram" class="platform-logo">
+                    <span>МТС Музыка</span>
+                </div>
+                <div class="platform-item">
+                    <img src="img/Yappy.png" alt="Instagram" class="platform-logo">
+                    <span>Yappy</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-container">
+            <h2 class="section-title">Что мы предлагаем</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18V5l12-2v13M9 18l-4-2V4l4 2M9 18l4-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Дистрибуция музыки</h3>
+                    <p>Мы поможем вашей музыке добраться до самых дальних уголков мира через наших партнеров и платформы.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M3 3v18l6-3 6 3 6-3V3l-6 3-6-3-6 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 9h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Аналитика</h3>
+                    <p>Ваши прослушивания в реальном времени с детальной географией и статистикой по платформам.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 1v22M17 5H9.5C8.11929 5 7 6.11929 7 7.5C7 8.88071 8.11929 10 9.5 10H14.5C15.8807 10 17 11.1193 17 12.5C17 13.8807 15.8807 15 14.5 15H7M21 12H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Финансы</h3>
+                    <p>Прозрачная бухгалтерия и мгновенные выводы средств без скрытых комиссий.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M13 2L3 14h12l-1 8 10-12H12l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Питчинг</h3>
+                    <p>Профессиональное продвижение музыки в плейлисты крупнейших стриминговых платформ.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M9 11H5a2 2 0 0 0-2 2v3c0 1.1.9 2 2 2h4l5 4V7l-5 4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 8l3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Автоматическое продвижение</h3>
+                    <p>Полностью автоматизированный процесс продвижения на всех платформах.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2a3 3 0 0 0-3 3c0 3 3 3 3 3s3 0 3-3a3 3 0 0 0-3-3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="19" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="8" y1="23" x2="16" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Поддержка артистов</h3>
+                    <p>Персональная поддержка и консультации для развития музыкальной карьеры.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="dashboard">
+        <div class="section-container">
+            <h2 class="section-title">Наши сервисы</h2>
+            <div class="dashboard-grid">
+                <!-- Analytics Module - Redesigned -->
+                <div class="dashboard-card card-wide analytics-dashboard">
+                    <div class="analytics-container">
+                        <div class="analytics-top">
+                            <div class="analytics-info">
+                                <h3 class="analytics-title">📊 Статистика прослушиваний</h3>
+                                <div class="analytics-metrics">
+                                    <div class="metric-box">
+                                        <span class="metric-value">16,600</span>
+                                        <span class="metric-label">Всего</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="metric-value">+23.5%</span>
+                                        <span class="metric-label">Рост</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="metric-value">664 ₽</span>
+                                        <span class="metric-label">Доход</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="analytics-actions">
+                                <div class="period-selector">
+                                    <button class="period-option active" data-period="7">7д</button>
+                                    <button class="period-option" data-period="30">30д</button>
+                                    <button class="period-option" data-period="90">90д</button>
+                                </div>
+                                <button class="export-button">Экспорт</button>
+                            </div>
+                        </div>
+
+                        <div class="analytics-main">
+                            <div class="chart-area">
+                                <div class="chart-wrapper">
+                                    <canvas id="analyticsChart"></canvas>
+                                    <div class="chart-overlay">
+                                        <div class="loading-indicator">Загрузка...</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="stats-sidebar">
+                                <div class="stats-tabs">
+                                    <button class="stats-tab active" data-tab="platforms">Платформы</button>
+                                    <button class="stats-tab" data-tab="locations">География</button>
+                                </div>
+
+                                <div class="stats-content">
+                                    <div class="tab-panel active" data-panel="platforms">
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot spotify"></div>
+                                                <span>Spotify</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">92.9%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill" style="width: 92.9%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot apple"></div>
+                                                <span>Apple Music</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">3.7%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill apple-fill" style="width: 3.7%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot deezer"></div>
+                                                <span>Deezer</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">2.7%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill deezer-fill" style="width: 2.7%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot soundcloud"></div>
+                                                <span>SoundCloud</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">0.7%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill soundcloud-fill" style="width: 0.7%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-panel" data-panel="locations">
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot russia"></div>
+                                                <span>Россия</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">40.3%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill russia-fill" style="width: 40.3%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot kazakhstan"></div>
+                                                <span>Казахстан</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">16.7%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill kazakhstan-fill" style="width: 16.7%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot usa"></div>
+                                                <span>США</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">13.2%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill usa-fill" style="width: 13.2%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="stat-row">
+                                            <div class="platform-info">
+                                                <div class="platform-dot belarus"></div>
+                                                <span>Беларусь</span>
+                                            </div>
+                                            <div class="stat-data">
+                                                <span class="stat-number">11.2%</span>
+                                                <div class="stat-progress">
+                                                    <div class="progress-fill belarus-fill" style="width: 11.2%"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Feed - Regular -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>📋 Активность</h3>
+                        <button class="filter-btn">Все</button>
+                    </div>
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <div class="activity-icon">🎵</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Новый релиз добавлен</div>
+                                <div class="activity-description">Звездный Путь - Алексей Небо</div>
+                                <div class="activity-time">2 часа назад</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">💰</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Выплата обработана</div>
+                                <div class="activity-description">1,250 ₽ переведено на карту</div>
+                                <div class="activity-time">5 часов назад</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">📊</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Месячный отчет готов</div>
+                                <div class="activity-description">Статистика за январь 2025</div>
+                                <div class="activity-time">1 день назад</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">🎯</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Трек в плейлисте</div>
+                                <div class="activity-description">Добавлен в "New Music Friday"</div>
+                                <div class="activity-time">2 дня назад</div>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon">📈</div>
+                            <div class="activity-content">
+                                <div class="activity-title">Рост прослушиваний</div>
+                                <div class="activity-description">+25% за последнюю неделю</div>
+                                <div class="activity-time">3 дня назад</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Reports - Wide -->
+                <div class="dashboard-card card-reports">
+                    <div class="card-header">
+                        <h3>📄 Финансовые отчёты</h3>
+                        <button class="filter-btn">Экспорт</button>
+                    </div>
+                    <div class="reports-table-container">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Период</th>
+                                    <th>Тип отчета</th>
+                                    <th>Дата генерации</th>
+                                    <th>Сумма (RUB)</th>
+                                    <th>Действие</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Q1 2025</td>
+                                    <td>Единый отчет</td>
+                                    <td>01/04/2025</td>
+                                    <td>3,450.75 ₽</td>
+                                    <td><button class="download-btn">⬇</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Q4 2024</td>
+                                    <td>Единый отчет</td>
+                                    <td>01/01/2025</td>
+                                    <td>2,190.41 ₽</td>
+                                    <td><button class="download-btn">⬇</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Q3 2024</td>
+                                    <td>Единый отчет</td>
+                                    <td>01/10/2024</td>
+                                    <td>1,875.30 ₽</td>
+                                    <td><button class="download-btn">⬇</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Balance Module - Small -->
+                <div class="dashboard-card card-small">
+                    <div class="card-header">
+                        <h3>💰 Баланс</h3>
+                        <button class="withdraw-btn">Запрос на вывод</button>
+                    </div>
+                    <div class="balance-display">
+                        <span class="balance-amount">0 ₽</span>
+                        <div class="balance-info">
+                            <div class="balance-stat">
+                                <span class="balance-stat-value">12</span>
+                                <span class="balance-stat-label">Релизов</span>
+                            </div>
+                            <div class="balance-stat">
+                                <span class="balance-stat-value">5.2K</span>
+                                <span class="balance-stat-label">Прослушиваний</span>
+                            </div>
+                            <div class="balance-stat">
+                                <span class="balance-stat-value">89%</span>
+                                <span class="balance-stat-label">Прирост</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catalog Module - Wide -->
+                <div class="dashboard-card card-catalog">
+                    <div class="card-header">
+                        <h3>🎼 Каталог</h3>
+                        <div class="search-container">
+                            <input type="text" placeholder="Поиск релизов..." class="search-input">
+                            <div class="filter-buttons">
+                                <button class="filter-btn active">Релизы</button>
+                                <button class="filter-btn">Черновики</button>
+                                <button class="filter-btn">Модерация</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-content">
+                        <div class="release-card">
+                            <img src="img/album-cover-placeholder.svg" alt="Album Cover" class="album-cover">
+                            <div class="release-info">
+                                <h4>Звездный Путь</h4>
+                                <p class="artist-name">Алексей Небо</p>
+                                <div class="release-details">
+                                    <div class="detail-item">
+                                        <span class="label">UPC:</span>
+                                        <span class="value">012345678901</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Лейбл:</span>
+                                        <span class="value">Sound Delivery</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Дата релиза:</span>
+                                        <span class="value">2025-07-08</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Жанр:</span>
+                                        <span class="value">Hip Hop/Rap</span>
+                                    </div>
+                                </div>
+                                <button class="tracklist-btn">Треклист ▼</button>
+                            </div>
+                        </div>
+
+                        <div class="release-card">
+                            <img src="img/album-cover-placeholder.svg" alt="Album Cover" class="album-cover">
+                            <div class="release-info">
+                                <h4>Космос</h4>
+                                <p class="artist-name">Алексей Небо</p>
+                                <div class="release-details">
+                                    <div class="detail-item">
+                                        <span class="label">UPC:</span>
+                                        <span class="value">012345678902</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Лейбл:</span>
+                                        <span class="value">Sound Delivery</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Дата релиза:</span>
+                                        <span class="value">2025-06-15</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Жанр:</span>
+                                        <span class="value">Electronic</span>
+                                    </div>
+                                </div>
+                                <button class="tracklist-btn">Треклист ▼</button>
+                            </div>
+                        </div>
+
+                        <div class="release-card">
+                            <img src="img/album-cover-placeholder.svg" alt="Album Cover" class="album-cover">
+                            <div class="release-info">
+                                <h4>Галактика</h4>
+                                <p class="artist-name">Алексей Небо</p>
+                                <div class="release-details">
+                                    <div class="detail-item">
+                                        <span class="label">UPC:</span>
+                                        <span class="value">012345678903</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Лейбл:</span>
+                                        <span class="value">Sound Delivery</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Дата релиза:</span>
+                                        <span class="value">2025-05-20</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">Жанр:</span>
+                                        <span class="value">Ambient</span>
+                                    </div>
+                                </div>
+                                <button class="tracklist-btn">Треклист ▼</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions - Small -->
+                <div class="dashboard-card card-small">
+                    <div class="card-header">
+                        <h3>⚡ Быстрые действия</h3>
+                    </div>
+                    <div class="quick-actions">
+                        <div class="actions-grid">
+                            <button class="action-btn">
+                                <span class="action-btn-icon">🎵</span>
+                                <span class="action-btn-text">Новый релиз</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-btn-icon">📊</span>
+                                <span class="action-btn-text">Аналитика</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-btn-icon">💸</span>
+                                <span class="action-btn-text">Выплаты</span>
+                            </button>
+                            <button class="action-btn">
+                                <span class="action-btn-icon">📞</span>
+                                <span class="action-btn-text">Поддержка</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-container">
+            <h2 class="section-title">Популярные вопросы</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Как происходит дистрибуция?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы автоматически распространяем вашу музыку по всем основным платформам и сервисам в течение 24-48 часов.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Сколько времени занимает процесс?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Обычно процесс занимает от 24 до 48 часов для полного размещения на всех платформах.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Какие платформы поддерживаются?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы работаем со всеми основными платформами: Spotify, Apple Music, YouTube Music, Deezer, TikTok, Instagram и многими другими.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-section" id="contact">
+        <div class="section-container">
+            <div class="footer-wrapper">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">Sound Delivery</div>
+                        <p class="footer-tagline">Ваш надежный партнер в мире музыкальной дистрибуции. Мы делаем вашу музыку доступной для миллионов слушателей по всему миру.</p>
+
+                        <div class="social-section">
+                            <h4>Присоединяйтесь</h4>
+                            <div class="social-icons">
+                                <a href="#" class="social-icon" aria-label="VKontakte">
+                                    <span>📱</span>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="Telegram">
+                                    <span>✈️</span>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="YouTube">
+                                    <span>▶️</span>
+                                </a>
+                                <a href="#" class="social-icon" aria-label="Email">
+                                    <span>📧</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-nav">
+                        <div class="footer-column">
+                            <h4>Продукт</h4>
+                            <div class="footer-links">
+                                <a href="#services">Дистрибуция</a>
+                                <a href="#services">Аналитика</a>
+                                <a href="#services">Питчинг</a>
+                                <a href="#services">Поддержка артистов</a>
+                            </div>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4>Компания</h4>
+                            <div class="footer-links">
+                                <a href="#about">О нас</a>
+                                <a href="#platforms">Партнеры</a>
+                                <a href="#pricing">Цены</a>
+                                <a href="#faq">FAQ</a>
+                            </div>
+                        </div>
+
+                        <div class="footer-column">
+                            <h4>Поддержка</h4>
+                            <div class="footer-links">
+                                <a href="mailto:support@sounddelivery.com">Написать в поддержку</a>
+                                <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                                <a href="#help">База знаний</a>
+                                <a href="#api">API документация</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Sound Delivery. Все права защищены. <a href="#privacy">Политика конфиденциальности</a> · <a href="#terms">Условия использования</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
