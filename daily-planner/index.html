@@ -1,45 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-     <meta name="apple-mobile-web-app-title" content="План задач" />
-     <link rel="apple-touch-icon" href="icons/icon-180.png">
-<script>
-  if (window.navigator.standalone) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        window.scrollTo(0, 1);
-      }, 0);
-    });
-  }
-</script>
-    <title>План задач</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        /* Стили для выполненных задач */
-        .done {
-            text-decoration: line-through;
-            opacity: 0.6;
-        }
-        .small-text {
-            font-size: 0.85rem;
-            color: #6c757d;
-        }
-    </style>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <title>План задач</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="План задач" />
+        <link rel="apple-touch-icon" href="icons/icon-180.png">
+        <script>
+            if (window.navigator.standalone) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        window.scrollTo(0, 1);
+                    }, 0);
+                });
+            }
+        </script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            .done {
+                text-decoration: line-through;
+                opacity: 0.6;
+            }
+            .small-text {
+                font-size: 0.85rem;
+                color: #6c757d;
+            }
+            .list-group-item {
+                word-wrap: break-word;
+            }
+            @media (max-width: 576px) {
+                .list-group-item {
+                    padding: 0.5rem;
+                }
+                .btn {
+                    font-size: 0.85rem;
+                    padding: 0.3rem 0.6rem;
+                }
+            }
+        </style>
+    </head>
 <body class="bg-light">
 
 <div class="container py-5">
     <h2 class="mb-4 text-center">📋 План задач</h2>
 
     <!-- Форма добавления новой задачи -->
-    <div class="input-group mb-3">
-        <input type="text" id="taskInput" class="form-control" placeholder="Введите задачу..." />
-        <button class="btn btn-primary" onclick="addTask()">Добавить</button>
-    </div>
+    <form class="row g-2 mb-3" onsubmit="event.preventDefault(); addTask();">
+        <div class="col-12 col-md-9">
+            <input type="text" id="taskInput" class="form-control" placeholder="Введите задачу..." />
+        </div>
+        <div class="col-12 col-md-3">
+            <button class="btn btn-primary w-100" type="submit">Добавить</button>
+        </div>
+    </form>
 
     <!-- Список задач -->
     <ul id="taskList" class="list-group"></ul>
@@ -47,7 +63,7 @@
 
 <!-- Модальное окно для редактирования задачи -->
 <div class="modal fade" id="editModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Редактировать задачу</h5>
@@ -66,7 +82,7 @@
 
 <!-- Модальное окно для редактирования подпункта -->
 <div class="modal fade" id="editSubModal" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Редактировать подпункт</h5>
@@ -84,13 +100,11 @@
 </div>
 
 <script>
-    // Массив задач
     let tasks = [];
     let currentEditIndex = null;
     let currentSubtaskParentIndex = null;
     let currentSubtaskIndex = null;
 
-    // Форматирование времени добавления
     function formatTime(date) {
         return date.toLocaleString("ru-RU", {
             hour: "2-digit",
@@ -102,12 +116,10 @@
         });
     }
 
-    // Сохраняем в localStorage
     function saveToStorage() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
-    // Загружаем из localStorage
     function loadFromStorage() {
         const stored = localStorage.getItem("tasks");
         if (stored) {
@@ -118,7 +130,6 @@
         }
     }
 
-    // Отображение всех задач и подпунктов
     function renderTasks() {
         const list = document.getElementById("taskList");
         list.innerHTML = "";
@@ -127,18 +138,18 @@
             const li = document.createElement("li");
             li.className = "list-group-item";
 
-            // Верхняя часть задачи с названием и кнопками
             const taskHeader = document.createElement("div");
-            taskHeader.className = "d-flex justify-content-between align-items-start flex-column flex-md-row";
+            taskHeader.className = "d-flex flex-column flex-md-row justify-content-between gap-2";
 
             const content = document.createElement("div");
-            content.className = "d-flex align-items-center";
+            const checkboxId = `task-check-${index}`;
+            content.className = "d-flex align-items-start gap-2";
             content.innerHTML = `
-                <input type="checkbox" class="form-check-input me-2 mt-0" onchange="toggleDone(${index})" ${task.done ? "checked" : ""}>
-                <div>
+                <input type="checkbox" id="${checkboxId}" class="form-check-input mt-1" onchange="toggleDone(${index})" ${task.done ? "checked" : ""}>
+                <label for="${checkboxId}" class="w-100">
                     <div class="${task.done ? 'done' : ''}">${task.text}</div>
                     <div class="small-text">Добавлено: ${task.time}</div>
-                </div>
+                </label>
             `;
 
             const buttons = document.createElement("div");
@@ -151,16 +162,16 @@
             taskHeader.appendChild(buttons);
             li.appendChild(taskHeader);
 
-            // Список подпунктов
             const sublist = document.createElement("ul");
             sublist.className = "list-group mt-2";
             task.subtasks.forEach((sub, subIndex) => {
                 const subItem = document.createElement("li");
                 subItem.className = "list-group-item py-1 px-2 d-flex justify-content-between align-items-center small";
+                const subCheckId = `sub-check-${index}-${subIndex}`;
                 subItem.innerHTML = `
-                    <span class="${sub.done ? 'done' : ''}">
-                        <input type="checkbox" class="form-check-input me-2" onchange="toggleSubtask(${index}, ${subIndex})" ${sub.done ? "checked" : ""}>
-                        ${sub.text}
+                    <span class="d-flex align-items-center ${sub.done ? 'done' : ''}">
+                        <input type="checkbox" id="${subCheckId}" class="form-check-input me-2" onchange="toggleSubtask(${index}, ${subIndex})" ${sub.done ? "checked" : ""}>
+                        <label for="${subCheckId}" class="mb-0 w-100">${sub.text}</label>
                     </span>
                     <div>
                         <button class="btn btn-sm btn-outline-secondary me-2" onclick="editSubtask(${index}, ${subIndex})">✏️</button>
@@ -170,7 +181,6 @@
                 sublist.appendChild(subItem);
             });
 
-            // Форма добавления подпунктов (если задача не завершена)
             const subForm = document.createElement("div");
             if (!task.done) {
                 subForm.className = "input-group mt-2";
@@ -180,12 +190,10 @@
                 `;
             }
 
-            // Добавляем все части задачи в DOM
             li.appendChild(sublist);
             li.appendChild(subForm);
             list.appendChild(li);
 
-            // Обработка Enter для добавления подпункта
             setTimeout(() => {
                 const subInput = document.getElementById(`subtaskInput-${index}`);
                 if (subInput) {
@@ -200,7 +208,6 @@
         });
     }
 
-    // Добавить новую задачу
     function addTask() {
         const input = document.getElementById("taskInput");
         const value = input.value.trim();
@@ -218,14 +225,12 @@
         }
     }
 
-    // Удалить задачу
     function deleteTask(index) {
         tasks.splice(index, 1);
         saveToStorage();
         renderTasks();
     }
 
-    // Открыть модальное окно редактирования задачи
     function editTask(index) {
         currentEditIndex = index;
         document.getElementById("editInput").value = tasks[index].text;
@@ -233,7 +238,6 @@
         modal.show();
     }
 
-    // Сохранить редактирование задачи
     function saveEdit() {
         const newValue = document.getElementById("editInput").value.trim();
         if (newValue !== "") {
@@ -244,7 +248,6 @@
         }
     }
 
-    // Переключение выполнения задачи (и всех подпунктов)
     function toggleDone(index) {
         const task = tasks[index];
         task.done = !task.done;
@@ -253,7 +256,6 @@
         renderTasks();
     }
 
-    // Добавление подпункта
     function addSubtask(taskIndex) {
         const input = document.getElementById(`subtaskInput-${taskIndex}`);
         const value = input.value.trim();
@@ -266,7 +268,6 @@
         }
     }
 
-    // Переключение выполнения подпункта и проверка статуса задачи
     function toggleSubtask(taskIndex, subIndex) {
         const task = tasks[taskIndex];
         const sub = task.subtasks[subIndex];
@@ -276,14 +277,12 @@
         renderTasks();
     }
 
-    // Удалить подпункт
     function deleteSubtask(taskIndex, subIndex) {
         tasks[taskIndex].subtasks.splice(subIndex, 1);
         saveToStorage();
         renderTasks();
     }
 
-    // Открыть редактирование подпункта
     function editSubtask(taskIndex, subIndex) {
         currentSubtaskParentIndex = taskIndex;
         currentSubtaskIndex = subIndex;
@@ -292,7 +291,6 @@
         modal.show();
     }
 
-    // Сохранить редактирование подпункта
     function saveSubEdit() {
         const newValue = document.getElementById("editSubInput").value.trim();
         if (newValue !== "") {
@@ -303,11 +301,9 @@
         }
     }
 
-    // Инициализация: загрузка и отображение
     loadFromStorage();
     renderTasks();
 
-    // Поддержка Enter для добавления задач
     document.getElementById("taskInput").addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
