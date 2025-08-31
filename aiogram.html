@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Telegram Bot Documentation</title>
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 30px;
+        line-height: 1.6;
+    }
+    h1 { color: #569cd6; border-bottom: 3px solid #569cd6; padding-bottom: 10px; }
+    h2 { color: #4ec9b0; margin-top: 30px; border-bottom: 2px solid #3c3c3c; padding-bottom: 5px; }
+    pre {
+        background-color: #252526;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: "Courier New", Courier, monospace;
+    }
+    .kw { color: #569cd6; }        /* ключевые слова Python */
+    .str { color: #d69d85; }       /* строки */
+    .com { color: #6a9955; }       /* комментарии */
+    .fun { color: #dcdcaa; }       /* функции и методы */
+    .num { color: #b5cea8; }       /* числа */
+    .cls { color: #4ec9b0; }       /* классы и типы */
+    .note { background-color: #ffeaa7; padding: 15px; border-left: 6px solid #fdcb6e; margin-bottom: 20px; border-radius: 6px; color: #2d3436; }
+</style>
+</head>
+<body>
+
+<h1>🤖 Полная документация по  Telegram Bot aiogram </h1>
+
+<h2>⚙ Каркас Telegram Bot с автоматическим завершением старых процессов Python</h2>
+
+<pre>
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Библиотеки</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">import</span> os           <span class="com"># Работа с ОС, получение PID</span>
+<span class="kw">import</span> subprocess   <span class="com"># Для tasklist и taskkill</span>
+<span class="kw">import</span> asyncio      <span class="com"># Асинхронный запуск бота</span>
+<span class="kw">import</span> logging      <span class="com"># Логирование</span>
+
+<span class="kw">from</span> aiogram <span class="kw">import</span> Bot, Dispatcher, types
+<span class="kw">from</span> aiogram.filters.command <span class="kw">import</span> Command
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Убиваем другие процессы python.exe</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">def</span> kill_python_processes(exclude_pid=<span class="kw">None</span>):
+    <span class="str">"""</span>
+    Завершает все процессы python.exe на Windows, кроме exclude_pid.
+    Предотвращает TelegramConflictError.
+    <span class="str">"""</span>
+    <span class="kw">try</span>:
+        result = subprocess.run(
+            <span class="str">'tasklist /FI "IMAGENAME eq python.exe"'</span>,
+            capture_output=<span class="kw">True</span>, text=<span class="kw">True</span>, shell=<span class="kw">True</span>
+        )
+        lines = result.stdout.splitlines()
+        <span class="kw">for</span> line <span class="kw">in</span> lines[3:]:
+            parts = line.split()
+            <span class="kw">if</span> len(parts) &gt;= 2:
+                pid = int(parts[1])
+                <span class="kw">if</span> exclude_pid <span class="kw">and</span> pid == exclude_pid:
+                    <span class="kw">continue</span>
+                print(f<span class="str">"Убиваем процесс python.exe с PID={pid}"</span>)
+                subprocess.run(f<span class="str">'taskkill /F /PID {pid}'</span>, shell=<span class="kw">True</span>)
+    <span class="kw">except</span> Exception <span class="kw">as</span> e:
+        print(f<span class="str">"Ошибка при попытке убить процессы: {e}"</span>)
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Логирование</span>
+<span class="com"># ---------------------------------------------</span>
+logging.basicConfig(level=logging.INFO)
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Настройка бота</span>
+<span class="com"># ---------------------------------------------</span>
+BOT_TOKEN = <span class="str">"ВАШ_ТОКЕН"</span>
+<span class="kw">if</span> not BOT_TOKEN:
+    raise RuntimeError(<span class="str">"Укажи BOT_TOKEN"</span>)
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Хэндлер команды /start</span>
+<span class="com"># ---------------------------------------------</span>
+@dp.message(Command(<span class="str">"start"</span>))
+<span class="kw">async def</span> cmd_start(message: types.Message):
+    await message.answer(<span class="str">"Hello!"</span>)
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Асинхронный запуск бота</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">async def</span> main():
+    print(<span class="str">"🤖 Бот запущен…"</span>)
+    await dp.start_polling(bot)
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Главный блок запуска</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">if</span> __name__ == <span class="str">"__main__"</span>:
+    current_pid = os.getpid()
+    kill_python_processes(exclude_pid=current_pid)
+    asyncio.run(main())
+</pre>
+
+<div class="note">
+💡 Примечания:
+<ul>
+<li>Скрипт работает только на <strong>Windows</strong>.</li>
+<li>Для Linux/macOS можно заменить логику на <code>psutil</code> и <code>kill</code>.</li>
+<li>Будьте осторожны — скрипт завершает все процессы python.exe, кроме текущего.</li>
+</ul>
+</div>
+
+
+<h2>⚙ Обработчик /settings с inline-клавиатурой</h2>
+
+<pre>
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Импорт и команда /settings</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">from</span> aiogram.filters.command <span class="kw">import</span> Command
+<span class="kw">from</span> aiogram.types <span class="kw">import</span> InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+<span class="kw">from</span> aiogram <span class="kw">import</span> F
+
+
+
+<span class="kw">@dp.message</span>(Command(<span class="str">"settings"</span>))
+<span class="kw">async def</span> cmd_settings(message: types.Message):
+    <span class="str">"""
+    При команде /settings показываем inline клавиатуру с настройками
+    """</span>
+    await message.answer(
+        <span class="str">"Настройки бота:"</span>,
+        reply_markup=settings_keyboard(message.chat.id)
+    )
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Функция для генерации inline-клавиатуры</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">def</span> settings_keyboard(chat_id):
+    st = get_settings(chat_id)
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text=f<span class="str">"🎨 Mode: {st['mode']}"</span>, callback_data=<span class="str">"mode"</span>)],
+        [InlineKeyboardButton(text=f<span class="str">"🌈 Color: {st['color']}"</span>, callback_data=<span class="str">"color"</span>)],
+        [InlineKeyboardButton(text=<span class="str">"🖼 Фон"</span>, callback_data=<span class="str">"bg"</span>)]
+    ])
+    <span class="kw">return</span> kb
+
+<span class="com"># ---------------- Заглушка get_settings ----------------</span>
+<span class="kw">def</span> get_settings(chat_id):
+    <span class="str">"""
+    Возвращает словарь с настройками пользователя.
+    Для теста можно вернуть фиксированные значения.
+    """</span>
+    <span class="kw">return</span> {"mode": <span class="str">"Dark"</span>, "color": <span class="str">"Blue"</span>}
+
+<span class="com"># ---------------------------------------------</span>
+<span class="com"># Callback-обработчики кнопок</span>
+<span class="com"># ---------------------------------------------</span>
+<span class="kw">@dp.callback_query</span>(F.data == <span class="str">"mode"</span>)
+<span class="kw">async def</span> cb_mode(c: CallbackQuery):
+    await c.answer(<span class="str">"mode!"</span>)
+
+<span class="kw">@dp.callback_query</span>(F.data == <span class="str">"color"</span>)
+<span class="kw">async def</span> cb_color(c: CallbackQuery):
+    await c.answer(<span class="str">"color!"</span>)
+
+<span class="kw">@dp.callback_query</span>(F.data == <span class="str">"bg"</span>)
+<span class="kw">async def</span> cb_bg(c: CallbackQuery):
+    await c.answer(<span class="str">"background!"</span>)
+</pre>
+
+<div class="note">
+💡 Примечания:
+<ul>
+<li>Inline-клавиатура создаётся функцией <code>settings_keyboard</code> с динамическими данными.</li>
+<li>В будущем данные настроек можно получать из базы данных вместо заглушки <code>get_settings</code>.</li>
+<li>Callback-обработчики используют <code>CallbackQuery</code> и <code>F.data</code> для определения кнопки.</li>
+<li>Можно расширять клавиатуру новыми кнопками и обработчиками по аналогии.</li>
+</ul>
+</div>
+
+</body>
+</html>
