@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация — ВОЛНА</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .auth-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 28px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+        }
+        .auth-logo svg {
+            fill: #ffffff !important;
+        }
+        .auth-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .auth-subtitle {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 8px;
+            margin-left: 5px;
+        }
+        .form-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px 20px;
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .btn-auth {
+            width: 100%;
+            background: var(--accent-color);
+            color: black;
+            padding: 16px;
+            border-radius: 15px;
+            font-weight: 800;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+        }
+        .btn-auth:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 240, 255, 0.3);
+        }
+        .auth-footer {
+            margin-top: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+        .auth-link {
+            color: var(--accent-color);
+            font-weight: 700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <a href="index.html" class="auth-logo">
+            <svg viewBox="0 0 100 100" width="35" fill="var(--accent-color)">
+                <polygon points="20,10 80,50 20,90" />
+            </svg>
+            ВОЛНА
+        </a>
+        <h1 class="auth-title">Создать аккаунт</h1>
+        <p class="auth-subtitle">Присоединяйтесь к сообществу киноманов</p>
+        
+        <form action="login.html">
+            <div class="form-group">
+                <label class="form-label">Ваше имя</label>
+                <input type="text" class="form-input" placeholder="Иван Иванов" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" placeholder="example@mail.com" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <input type="password" class="form-input" placeholder="Минимум 8 символов" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Повторите пароль</label>
+                <input type="password" class="form-input" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-auth">Зарегистрироваться</button>
+        </form>
+
+        <div class="auth-footer">
+            Уже есть аккаунт? <a href="login.html" class="auth-link">Войти</a>
+        </div>
+    </div>
+</body>
+</html>

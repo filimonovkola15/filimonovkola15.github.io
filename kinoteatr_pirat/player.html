@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Воспроизведение — ВОЛНА</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .player-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 5;
+        }
+
+        /* Float Glass Back Button */
+        .btn-player-back {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 9999; /* Ensure it is always on top of iframe */
+            width: 50px;
+            height: 50px;
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-player-back:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.1);
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.3);
+            border-color: #ffffff;
+        }
+
+        .btn-player-back svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-player-back:hover svg {
+            transform: translateX(-2px);
+        }
+
+        /* Glowing Loader */
+        .player-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--accent-color, #00f0ff);
+            animation: spin 1s ease-in-out infinite;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .btn-player-back {
+                top: 20px;
+                left: 20px;
+                width: 44px;
+                height: 44px;
+            }
+            .btn-player-back svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="player-container">
+        <!-- Back Button -->
+        <button class="btn-player-back" id="back-btn" title="Вернуться назад">
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+        </button>
+
+        <!-- Loader -->
+        <div class="player-loader" id="loader">
+            <div class="spinner"></div>
+            <span>Загрузка видео...</span>
+        </div>
+
+        <!-- Dedicated Video Stream Frame -->
+        <iframe id="player-iframe" src="" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('player-iframe');
+        const loader = document.getElementById('loader');
+        const backBtn = document.getElementById('back-btn');
+
+        // Extract parameters from URL query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoUrl = urlParams.get('video');
+        const backUrl = urlParams.get('back') || 'movie-details.html';
+
+        if (videoUrl) {
+            // Unpack parameters and prepare autoPlay
+            let finalUrl = decodeURIComponent(videoUrl);
+            // Append autoplay rules if not already present
+            if (!finalUrl.includes('autoplay=')) {
+                finalUrl += (finalUrl.includes('?') ? '&' : '?') + 'autoplay=1&autoStart=true';
+            }
+            iframe.src = finalUrl;
+        } else {
+            // Fallback default stream
+            iframe.src = 'https://rutube.ru/play/embed/f964049969634e0828751508210343a4/?autoplay=1&autoStart=true';
+        }
+
+        // Hide loader once the iframe finishes loading
+        iframe.onload = () => {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+            }, 600);
+        };
+
+        // Go back action
+        backBtn.addEventListener('click', () => {
+            window.location.href = backUrl;
+        });
+    </script>
+</body>
+</html>

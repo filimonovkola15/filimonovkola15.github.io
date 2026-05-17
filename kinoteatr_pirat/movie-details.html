@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новичок (2018) — Смотреть онлайн — ВОЛНА</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="details-page">
+    <header id="main-header">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 100 100" width="30">
+                    <polygon points="20,10 80,50 20,90" />
+                </svg>
+                ВОЛНА
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="movies.html">Фильмы</a>
+                <a href="series.html">Сериалы</a>
+                <a href="#">Спорт</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-trial">7 дней за 0Р</button>
+            <div class="user-login">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Войти</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+
+        <!-- Movie Details Hero -->
+        <section class="movie-details-hero" id="movie-hero">
+            <!-- Floating Back Button on top of banner -->
+            <a href="index.html" class="details-back-btn">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+                <span>Назад</span>
+            </a>
+
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="Новичок Backdrop">
+            </div>
+            <div class="hero-overlay" style="background: linear-gradient(to top, var(--bg-color) 0%, rgba(0,0,0,0) 100%);"></div>
+            
+            <div class="details-content">
+                <h1 class="hero-title">Новичок</h1>
+                <div class="details-meta">
+                    <span class="meta-badge">9.6</span>
+                    <span class="meta-badge">Новый сезон</span>
+                    <span class="meta-badge">Full HD</span>
+                    <span>2018 - настоящее время</span>
+                    <span>Драма, Криминал</span>
+                    <span>18+</span>
+                </div>
+                <p class="details-description" id="movie-desc">
+                    <span class="desc-preview">Джон Нолан — сорокалетний мужчина, который после развода и случайного участия в предотвращении ограбления банка решает круто изменить свою жизнь, исполнив давнюю мечту — служить в полиции Лос-Анджелеса.</span>
+                    <span class="desc-full" style="display: none;"> Став самым возрастным новобранцем в истории полицейского департамента, Нолан сталкивается с открытым скептицизмом руководства, опасными улицами мегаполиса и необходимостью доказать молодым коллегам, что его жизненный опыт, мудрость и стойкость могут быть важнее молодости и отличной физической подготовки на службе закона.</span>
+                    <span class="desc-toggle-btn" onclick="toggleDescription()" style="color: var(--accent-color); cursor: pointer; font-weight: 700; margin-left: 6px; white-space: nowrap;">...еще</span>
+                </p>
+                <div class="details-actions" style="display: block;">
+                    <button class="btn-primary-neon" id="start-watching">
+                        Продолжить 8 сезон, 1 серия
+                    </button>
+                    
+                    <div class="details-secondary-actions">
+                        <button class="btn-secondary-action btn-trailer" id="watch-trailer">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+                            Трейлер
+                        </button>
+                        <button class="btn-icon-action btn-fav" id="toggle-favorites" title="В избранное">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+                        </button>
+                        <button class="btn-icon-action btn-share" id="trigger-share" title="Поделиться">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186.002-.006a2.25 2.25 0 1 0-.002.006m0 2.186.002.006a2.25 2.25 0 1 0-.002-.006m1.393-2.18 5.642-3.13m-5.642 5.31 5.642 3.13" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Grid -->
+        <div class="info-grid">
+            <div class="info-section">
+                <h3>Актерский состав</h3>
+                <div class="cast-row">
+                    <div class="cast-card" onclick="location.href='person.html'">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" class="cast-img" alt="Actor 1">
+                        <div class="cast-name">Натан Филлион</div>
+                        <div class="cast-role">Джон Нолан</div>
+                    </div>
+                    <div class="cast-card" onclick="location.href='person.html'">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop" class="cast-img" alt="Actor 2">
+                        <div class="cast-name">Мелисса О’Нил</div>
+                        <div class="cast-role">Люси Чен</div>
+                    </div>
+                    <div class="cast-card" onclick="location.href='person.html'">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" class="cast-img" alt="Actor 3">
+                        <div class="cast-name">Эрик Уинтер</div>
+                        <div class="cast-role">Тим Брэдфорд</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>О фильме</h3>
+                <div class="info-list">
+                    <p onclick="location.href='person.html'" style="cursor:pointer"><b>Режиссер:</b> Натан Филлион, Майкл Гои</p>
+                    <p><b>Сценарий:</b> Алекси Хоули</p>
+                    <p><b>Жанры:</b> Боевик, Драма, Криминал</p>
+                    <p><b>Оригинал:</b> The Rookie</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Episodes Section -->
+        <section class="episodes-section">
+            <div class="section-header">
+                <h2 class="section-title">Эпизоды 8 сезона</h2>
+            </div>
+            
+            <div class="episode-item" data-video="https://vkvideo.ru/video_ext.php?oid=-12204012&id=456239799&hash=e460aa0f2275ffc3&hd=4">
+                <div class="episode-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Ep 1">
+                    <div class="play-icon-mini"><svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg></div>
+                </div>
+                <div class="episode-info">
+                    <h4><span class="ep-num">1.</span> Огонь в небе</h4>
+                    <p>Команда сталкивается с новой угрозой в центре города, пока Нолан пытается наладить отношения с новыми стажерами.</p>
+                </div>
+            </div>
+
+            <div class="episode-item" data-video="https://rutube.ru/play/embed/f964049969634e0828751508210343a4/">
+                <div class="episode-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=2070&auto=format&fit=crop" alt="Ep 2">
+                    <div class="play-icon-mini"><svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg></div>
+                </div>
+                <div class="episode-info">
+                    <h4><span class="ep-num">2.</span> Перекрестный огонь</h4>
+                    <p>Люси и Тим оказываются в ловушке во время патрулирования, требуя немедленной помощи от всего управления.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 ВОЛНА. Все права защищены. 18+</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const startBtn = document.getElementById('start-watching');
+        const episodeItems = document.querySelectorAll('.episode-item');
+
+        function toggleDescription() {
+            const fullText = document.querySelector('.desc-full');
+            const toggleBtn = document.querySelector('.desc-toggle-btn');
+            if (fullText.style.display === 'none') {
+                fullText.style.display = 'inline';
+                toggleBtn.textContent = ' Свернуть';
+            } else {
+                fullText.style.display = 'none';
+                toggleBtn.textContent = '...еще';
+            }
+        }
+
+        function playVideo(url) {
+            const currentUrl = window.location.href;
+            window.location.href = `player.html?video=${encodeURIComponent(url)}&back=${encodeURIComponent(currentUrl)}`;
+        }
+
+        startBtn.addEventListener('click', () => {
+            playVideo("https://rutube.ru/play/embed/f964049969634e0828751508210343a4/");
+        });
+
+        // Trailer playback trigger
+        document.getElementById('watch-trailer').addEventListener('click', () => {
+            playVideo("https://rutube.ru/play/embed/f964049969634e0828751508210343a4/");
+        });
+
+        // Glowing Favorites heart toggle
+        const favBtn = document.getElementById('toggle-favorites');
+        favBtn.addEventListener('click', () => {
+            const svg = favBtn.querySelector('svg');
+            if (svg.getAttribute('fill') === 'currentColor') {
+                svg.setAttribute('fill', 'none');
+                svg.style.color = '#ffffff';
+            } else {
+                svg.setAttribute('fill', 'currentColor');
+                svg.style.color = '#FF2EFF'; // Neon Magenta
+            }
+        });
+
+        // Copy-to-clipboard Share with premium toast notification
+        const shareBtn = document.getElementById('trigger-share');
+        shareBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const toast = document.createElement('div');
+                toast.textContent = 'Ссылка скопирована!';
+                toast.style.cssText = 'position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: rgba(0, 240, 255, 0.95); color: black; font-weight: 700; padding: 12px 24px; border-radius: 30px; font-size: 14px; z-index: 10000; box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4); pointer-events: none; transition: opacity 0.4s ease;';
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 400);
+                }, 2000);
+            });
+        });
+
+        episodeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const url = item.getAttribute('data-video');
+                playVideo(url);
+            });
+        });
+
+        // Autoplay check
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('autoplay') === 'true') {
+            setTimeout(() => {
+                playVideo("https://rutube.ru/play/embed/f964049969634e0828751508210343a4/");
+            }, 400);
+        }
+    </script>
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Главная</span>
+        </a>
+        <a href="search.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <span>Поиск</span>
+        </a>
+        <a href="wave.html" class="mobile-nav-item nav-wave">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span>Волна</span>
+        </a>
+        <a href="favorites.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Избранное</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Профиль</span>
+        </a>
+    </nav>
+</body>
+</html>

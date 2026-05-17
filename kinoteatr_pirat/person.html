@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Натан Филлион — Актер, Режиссер — ВОЛНА</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="main-header" class="scrolled">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 100 100" width="30">
+                    <polygon points="20,10 80,50 20,90" />
+                </svg>
+                ВОЛНА
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="movies.html">Фильмы</a>
+                <a href="series.html">Сериалы</a>
+                <a href="#">Спорт</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-trial">7 дней за 0Р</button>
+            <div class="user-login">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Войти</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="person-container">
+        <div class="person-left">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" class="person-photo" alt="Натан Филлион">
+            <div class="person-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Карьера</div>
+                    <div class="stat-value">Актер, Продюсер, Режиссер</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Рост</div>
+                    <div class="stat-value">1.87 м</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Дата рождения</div>
+                    <div class="stat-value">27 марта, 1971 (55 лет)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Место рождения</div>
+                    <div class="stat-value">Эдмонтон, Канада</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Всего фильмов</div>
+                    <div class="stat-value">104</div>
+                </div>
+            </div>
+        </div>
+        <div class="person-right">
+            <h1>Натан Филлион</h1>
+            <div class="person-orig-name">Nathan Fillion</div>
+            
+            <div class="info-section">
+                <h3>Биография</h3>
+                <div class="person-bio">
+                    Натан Филлион — канадско-американский актер, наиболее известный по роли капитана Малькольма «Мэла» Рейнольдса в сериале «Светлячок» и его киносиквеле «Миссия „Серенити“», Ричарда Касла в сериале «Касл» и Джона Нолана в сериале «Новичок». Его карьера охватывает более трех десятилетий, включая озвучку видеоигр (серия Halo) и анимационных фильмов DC.
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Фильмография</h3>
+                <div class="row-container" style="padding: 0;">
+                    <div class="row-inner">
+                        <div class="movie-card" onclick="location.href='movie-details.html'">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="The Rookie">
+                                <div class="badge badge-rating">9.6</div>
+                            </div>
+                            <div class="card-title">Новичок</div>
+                            <div class="card-meta">2018, Сериал</div>
+                        </div>
+                        <div class="movie-card" onclick="location.href='movie-details.html'">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Castle">
+                                <div class="badge badge-rating">9.2</div>
+                            </div>
+                            <div class="card-title">Касл</div>
+                            <div class="card-meta">2009, Сериал</div>
+                        </div>
+                        <div class="movie-card" onclick="location.href='movie-details.html'">
+                            <div class="card-img-wrapper">
+                                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Firefly">
+                                <div class="badge badge-rating">9.8</div>
+                            </div>
+                            <div class="card-title">Светлячок</div>
+                            <div class="card-meta">2002, Сериал</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 100px;">
+        <div class="footer-bottom">
+            <p>© 2026 ВОЛНА. Все права защищены. 18+</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

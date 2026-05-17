@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ВОЛНА — Онлайн-кинотеатр: фильмы и сериалы онлайн</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header id="main-header">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 100 100" width="30">
+                    <polygon points="20,10 80,50 20,90" />
+                </svg>
+                ВОЛНА
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Главная</a>
+                <a href="wave.html">Волна</a>
+                <a href="movies.html">Фильмы</a>
+                <a href="series.html">Сериалы</a>
+                <a href="movies.html?genre=kids">Детям</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-app">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM5 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V2zM1 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5z"/></svg>
+                Приложение
+            </button>
+            <button class="btn-trial">7 дней за 0Р</button>
+            <button class="btn-promo">Промокод</button>
+            <a href="search.html" class="search-icon" style="color: white;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </a>
+            <a href="login.html" class="user-login" style="color: white; text-decoration: none;">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Войти</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg">
+                <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="Новичок">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Новичок</h1>
+                <div class="hero-info">
+                    <span class="rating">9,6</span>
+                    <span>Новый сезон</span>
+                    <span>2018</span>
+                    <span>Боевики</span>
+                    <span>8 сезонов</span>
+                    <span>18+</span>
+                </div>
+                <div class="hero-btns">
+                    <button class="btn-watch" onclick="location.href='movie-details.html?autoplay=true'">Смотреть</button>
+                    <button class="btn-more" onclick="location.href='movie-details.html'">Подробнее</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue Watching Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Продолжить просмотр</h2>
+            </div>
+            <div class="row-container">
+                <div class="row-inner">
+                    <div class="movie-card" onclick="location.href='movie-details.html?autoplay=true'">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Continue 1">
+                            <div class="badge badge-rating">8.9</div>
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.2);">
+                                <div style="width: 65%; height: 100%; background: var(--accent-color);"></div>
+                            </div>
+                        </div>
+                        <div class="card-title">Интерстеллар</div>
+                        <div class="card-meta">Осталось 42 мин</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html?autoplay=true'">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Continue 2">
+                            <div class="badge badge-rating">9.0</div>
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.2);">
+                                <div style="width: 30%; height: 100%; background: var(--accent-color);"></div>
+                            </div>
+                        </div>
+                        <div class="card-title">Начало</div>
+                        <div class="card-meta">Осталось 1 ч 20 мин</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big Releases (Gromkie novinki) -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Громкие новинки</h2>
+            </div>
+            <div class="row-container">
+                <div class="row-inner">
+                    <div class="big-release-card" onclick="location.href='movie-details.html'">
+                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop" alt="Release 1">
+                        <div class="big-release-info">
+                            <span class="big-release-tag">Эксклюзивно на ВОЛНЕ</span>
+                            <div class="big-release-title">Громкие премьеры 2025—2026</div>
+                        </div>
+                    </div>
+                    <div class="big-release-card" onclick="location.href='movie-details.html'">
+                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop" alt="Release 2">
+                        <div class="big-release-info">
+                            <span class="big-release-tag">Блокбастер</span>
+                            <div class="big-release-title">Легенды будущего</div>
+                        </div>
+                    </div>
+                    <div class="big-release-card" onclick="location.href='movie-details.html'">
+                        <img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?q=80&w=2073&auto=format&fit=crop" alt="Release 3">
+                        <div class="big-release-info">
+                            <span class="big-release-tag">Новый сезон</span>
+                            <div class="big-release-title">Теневая игра: Начало</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New in Subscription -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Новое в подписке</h2>
+            </div>
+            <div class="row-container">
+                <div class="row-inner">
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=2070&auto=format&fit=crop" alt="Movie 1">
+                            <div class="badge badge-rating">8,3</div>
+                            <div class="badge" style="left: auto; right: 8px;">Премьера</div>
+                        </div>
+                        <div class="card-title">Ранчо Даттонов</div>
+                        <div class="card-meta">2026, 1 сезон</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=2070&auto=format&fit=crop" alt="Movie 2">
+                            <div class="badge badge-rating">9,4</div>
+                            <div class="badge" style="left: auto; right: 8px;">Премьера</div>
+                        </div>
+                        <div class="card-title">Бухта вдов</div>
+                        <div class="card-meta">2026, 1 сезон</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=2070&auto=format&fit=crop" alt="Movie 3">
+                            <div class="badge badge-rating">9,2</div>
+                            <div class="badge" style="left: auto; right: 8px;">Новый сезон</div>
+                        </div>
+                        <div class="card-title">Друзья и соседи</div>
+                        <div class="card-meta">2025, 2 сезона</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wave Section -->
+        <section id="wave-preview-section">
+            <div class="section-header">
+                <h2 class="section-title">Волна <span class="badge" style="position: relative; top: 0; left: 0; margin-left: 10px; background: var(--accent-color); color: black;">Live</span></h2>
+                <a href="wave.html" class="btn-more" style="padding: 6px 16px; font-size: 13px;">Открыть на весь экран</a>
+            </div>
+            <div class="row-container">
+                <div class="row-inner shorts-row">
+                    <div class="movie-card" onclick="location.href='wave.html'">
+                        <div class="card-img-wrapper" style="aspect-ratio: 9/16; border-radius: 20px;">
+                            <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="Wave 1">
+                            <div class="wave-preview-info">
+                                <div class="wave-preview-title">Новичок</div>
+                                <div class="wave-preview-stats">12.4K 🔥</div>
+                            </div>
+                            <div class="play-icon-mini" style="opacity: 1; background: rgba(0,0,0,0.3);">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='wave.html'">
+                        <div class="card-img-wrapper" style="aspect-ratio: 9/16; border-radius: 20px;">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Wave 2">
+                            <div class="wave-preview-info">
+                                <div class="wave-preview-title">Интерстеллар</div>
+                                <div class="wave-preview-stats">45K 🔥</div>
+                            </div>
+                            <div class="play-icon-mini" style="opacity: 1; background: rgba(0,0,0,0.3);">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='wave.html'">
+                        <div class="card-img-wrapper" style="aspect-ratio: 9/16; border-radius: 20px;">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Wave 3">
+                            <div class="wave-preview-info">
+                                <div class="wave-preview-title">Начало</div>
+                                <div class="wave-preview-stats">32K 🔥</div>
+                            </div>
+                            <div class="play-icon-mini" style="opacity: 1; background: rgba(0,0,0,0.3);">
+                                <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+        
+        <!-- Kids Section -->
+        <section id="kids-section">
+            <div class="section-header">
+                <h2 class="section-title">Детям <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z"/></svg></h2>
+                <a href="movies.html?genre=kids" class="btn-more" style="padding: 6px 16px; font-size: 13px;">Все</a>
+            </div>
+            <div class="row-container">
+                <div class="row-inner">
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper" style="border: 2px solid #ff00ff;">
+                            <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop" alt="Kids 1">
+                            <div class="badge badge-rating">9.1</div>
+                            <div class="badge" style="left: auto; right: 8px; background: #ff00ff;">0+</div>
+                        </div>
+                        <div class="card-title">Мультвселенная</div>
+                        <div class="card-meta">2024, Мультфильм</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper" style="border: 2px solid #00ffff;">
+                            <img src="https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=2070&auto=format&fit=crop" alt="Kids 2">
+                            <div class="badge badge-rating">8.8</div>
+                            <div class="badge" style="left: auto; right: 8px; background: #00ffff;">6+</div>
+                        </div>
+                        <div class="card-title">Тайны океана</div>
+                        <div class="card-meta">2025, Приключения</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper" style="border: 2px solid #ffff00;">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Kids 3">
+                            <div class="badge badge-rating">9.5</div>
+                            <div class="badge" style="left: auto; right: 8px; background: #ffff00; color: black;">0+</div>
+                        </div>
+                        <div class="card-title">Космические котята</div>
+                        <div class="card-meta">2026, Комедия</div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <div class="card-img-wrapper" style="border: 2px solid #00ff00;">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Kids 4">
+                            <div class="badge badge-rating">8.5</div>
+                            <div class="badge" style="left: auto; right: 8px; background: #00ff00; color: black;">6+</div>
+                        </div>
+                        <div class="card-title">Герои леса</div>
+                        <div class="card-meta">2025, Мультфильм</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP-10 Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">ТОП-10 НЕДЕЛИ</h2>
+            </div>
+            <div class="row-container">
+                <div class="row-inner top-10-row">
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <span class="top-number">1</span>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Top 1">
+                        </div>
+                    </div>
+                    <div class="movie-card" onclick="location.href='movie-details.html'">
+                        <span class="top-number">2</span>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Top 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Genres Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Жанры</h2>
+            </div>
+            <div class="genres-grid">
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=200')">
+                    <span>Боевики</span>
+                </div>
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=200')">
+                    <span>Комедии</span>
+                </div>
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=200')">
+                    <span>Триллеры</span>
+                </div>
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=200')">
+                    <span>Фантастика</span>
+                </div>
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=200')">
+                    <span>Драмы</span>
+                </div>
+                <div class="genre-tile" style="background-image: url('https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=200')">
+                    <span>Ужасы</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collections Section -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Подборки <svg viewBox="0 0 16 16"><path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg></h2>
+            </div>
+            <div class="row-container">
+                <div class="row-inner">
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?q=80&w=2073&auto=format&fit=crop" alt="Col 1">
+                        <div class="collection-overlay">
+                            <div class="collection-title">Тру-крайм</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 ВОЛНА. Все права защищены. 18+</p>
+        </div>
+    </footer>
+
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item active">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Главная</span>
+        </a>
+        <a href="search.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <span>Поиск</span>
+        </a>
+        <a href="wave.html" class="mobile-nav-item nav-wave">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span>Волна</span>
+        </a>
+        <a href="favorites.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Избранное</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Профиль</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>

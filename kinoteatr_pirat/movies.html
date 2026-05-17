@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильмы — ВОЛНА</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            padding: 4%;
+        }
+        .page-title {
+            padding: 100px 4% 0;
+            font-size: 32px;
+            font-weight: 800;
+        }
+        .filters {
+            padding: 20px 4%;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+        }
+        .filter-btn {
+            background: #1a1a1a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header" class="scrolled">
+        <div class="nav-left">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 100 100" width="30">
+                    <polygon points="20,10 80,50 20,90" />
+                </svg>
+                ВОЛНА
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="movies.html" class="active">Фильмы</a>
+                <a href="series.html">Сериалы</a>
+                <a href="#">Спорт</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <button class="btn-trial">7 дней за 0Р</button>
+            <div class="user-login">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Войти</span>
+            </div>
+        </div>
+    </header>
+
+    <h1 class="page-title">Фильмы</h1>
+    
+    <div class="filters">
+        <button class="filter-btn active">Все жанры</button>
+        <button class="filter-btn">Боевики</button>
+        <button class="filter-btn">Комедии</button>
+        <button class="filter-btn">Драмы</button>
+        <button class="filter-btn">Фантастика</button>
+        <button class="filter-btn">Ужасы</button>
+        <button class="filter-btn">Мультфильмы</button>
+    </div>
+
+    <div class="grid-container">
+        <!-- Movies -->
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.9</div>
+            </div>
+            <div class="card-title">Интерстеллар</div>
+            <div class="card-meta">2014, Фантастика</div>
+        </div>
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">9.0</div>
+            </div>
+            <div class="card-title">Начало</div>
+            <div class="card-meta">2010, Боевик</div>
+        </div>
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1935&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.5</div>
+            </div>
+            <div class="card-title">Джокер</div>
+            <div class="card-meta">2019, Драма</div>
+        </div>
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1974&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.2</div>
+            </div>
+            <div class="card-title">Джентльмены</div>
+            <div class="card-meta">2019, Криминал</div>
+        </div>
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1535016120720-40c646bebb9c?q=80&w=2070&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.8</div>
+            </div>
+            <div class="card-title">Остров проклятых</div>
+            <div class="card-meta">2010, Триллер</div>
+        </div>
+        <!-- More cards... -->
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=2070&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.1</div>
+            </div>
+            <div class="card-title">Гарри Поттер</div>
+            <div class="card-meta">2001, Фэнтези</div>
+        </div>
+        <div class="movie-card" onclick="location.href='movie-details.html'">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?q=80&w=2070&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.4</div>
+            </div>
+            <div class="card-title">Ла-Ла Ленд</div>
+            <div class="card-meta">2016, Мюзикл</div>
+        </div>
+        <div class="movie-card">
+            <div class="card-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=2070&auto=format&fit=crop" alt="Movie">
+                <div class="badge badge-rating">8.6</div>
+            </div>
+            <div class="card-title">Зеленая миля</div>
+            <div class="card-meta">1999, Драма</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

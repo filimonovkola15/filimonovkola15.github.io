@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Волна — ВОЛНА: Трейлеры и лучшие моменты</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shorts-width: 450px;
+            --shorts-height: calc(var(--shorts-width) * 16 / 9);
+        }
+        body {
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            height: 100dvh;
+        }
+        .wave-bg-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(50px) brightness(0.3);
+            z-index: -1;
+            transition: background-image 0.5s ease;
+        }
+        .wave-container {
+            height: 100vh;
+            height: 100dvh;
+            width: var(--shorts-width);
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scrollbar-width: none;
+            position: relative;
+            background: #000;
+        }
+        .wave-container::-webkit-scrollbar {
+            display: none;
+        }
+        .wave-item {
+            height: 100vh;
+            height: 100dvh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #000;
+        }
+        .wave-video-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .wave-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 15px 90px; /* Increased bottom padding to clear mobile nav */
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0) 100%);
+            z-index: 10;
+        }
+        .wave-movie-info {
+            max-width: 100%;
+            padding-right: 80px; /* Prevent text from overlapping with buttons */
+        }
+        .wave-movie-title {
+            font-size: 28px; /* Increased from 18px */
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: -0.5px;
+        }
+        .wave-movie-desc {
+            font-size: 16px;
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            max-height: 2.8em; /* 2 lines x 1.4 line-height */
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: max-height;
+        }
+        .wave-movie-desc.expanded {
+            -webkit-line-clamp: 20; /* Use a large number instead of unset for smoother transition */
+            max-height: 500px; 
+        }
+        .btn-read-more {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 0;
+            margin-bottom: 15px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .btn-read-more:hover {
+            color: #fff;
+        }
+        .wave-actions-right {
+            position: absolute;
+            right: 15px;
+            top: 50%; /* Back to exact middle */
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            z-index: 11;
+        }
+        .wave-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+        }
+        .wave-action-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .wave-action-btn:hover .wave-action-icon {
+            background: var(--accent-color);
+            color: black;
+            transform: scale(1.1);
+            border-color: transparent;
+        }
+        .btn-watch-now {
+            background: linear-gradient(135deg, #00F0FF 0%, #FF2EFF 100%);
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.3), 0 4px 20px rgba(255, 46, 255, 0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-watch-now::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.6s ease;
+        }
+        .btn-watch-now:hover::before {
+            left: 100%;
+        }
+        .btn-watch-now:hover {
+            transform: scale(1.06) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 240, 255, 0.5), 0 8px 25px rgba(255, 46, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .btn-watch-now:active {
+            transform: scale(0.98) translateY(0);
+        }
+        /* Bottom Sheet Modal */
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0; /* Position at bottom, but hidden via transform */
+            left: 0;
+            width: 100%;
+            height: 70vh;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(25px);
+            z-index: 3000;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            transform: translateY(100%); /* Start completely off-screen */
+            transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1); /* Smooth ease-out */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+        }
+        .bottom-sheet.active {
+            transform: translateY(0); /* Slide up smoothly */
+        }
+        /* Tablet and Mobile adjustments */
+        @media (max-width: 1024px) {
+            :root {
+                --shorts-width: 100vw;
+            }
+            .wave-container {
+                width: 100vw;
+                height: 100vh;
+                height: 100dvh;
+                border-radius: 0;
+            }
+            .wave-item {
+                height: 100vh;
+                height: 100dvh;
+            }
+            .pc-nav-tips {
+                display: none !important; /* Completely hide floating navigation arrows on mobile/tablet! */
+            }
+            .wave-actions-right {
+                right: 20px; /* Stay inside on mobile/tablet */
+                left: auto;
+                top: auto;
+                bottom: 120px;
+                transform: none;
+                gap: 20px;
+            }
+            .wave-bg-blur {
+                display: none; /* No need for blur if video is full screen */
+            }
+            .wave-back {
+                top: 20px;
+                left: 20px;
+            }
+            .wave-logo {
+                top: 25px;
+            }
+        }
+        .sheet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            backdrop-filter: blur(5px);
+        }
+        .sheet-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sheet-title {
+            font-size: 20px;
+            font-weight: 800;
+        }
+        .sheet-close {
+            background: rgba(255,255,255,0.1);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .sheet-content {
+            overflow-y: auto;
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ccc;
+            padding-bottom: 40px;
+        }
+        .sheet-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sheet-content::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+        }
+        .wave-back {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 100;
+            width: 44px;
+            height: 44px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        .wave-back:hover {
+            background: #333;
+        }
+         .wave-logo {
+            position: fixed;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 900;
+            font-size: 22px;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+        }
+        .wave-logo svg {
+            fill: #ffffff !important;
+        }
+        .progress-bar-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        /* Navigation tips on PC & Mobile */
+        .pc-nav-tips {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: #ccc;
+            font-size: 13px;
+            text-align: center;
+            z-index: 100;
+        }
+        .key-tip {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+        .key-tip:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px) scale(1.05);
+        }
+        .key-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .key-tip:hover .key-icon {
+            border-color: var(--accent-color);
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            color: #fff;
+        }
+        /* Comments Styles */
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+        .comment-item {
+            display: flex;
+            gap: 12px;
+        }
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #333;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .comment-body {
+            flex: 1;
+        }
+        .comment-user {
+            font-size: 16px; /* Increased to 16px for all devices */
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .comment-text {
+            font-size: 17px; /* Increased to 17px for all devices */
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        .comment-meta span {
+            cursor: pointer;
+        }
+        .comment-meta .reply-btn:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .btn-show-replies {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 15px; /* Increased to 15px */
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+        .btn-show-replies .line {
+            width: 25px;
+            height: 1px;
+            background: #444;
+        }
+        .reply-item {
+            margin-top: 15px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            padding-left: 15px;
+        }
+        .comment-input-area {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            margin-top: auto;
+            width: 100%;
+        }
+        .comment-input-area .comment-avatar {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+        }
+        .comment-input {
+            flex: 1;
+            background: #222;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 20px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 16px; /* Larger input text */
+            min-width: 0;
+        }
+        .comment-input:focus {
+            outline: 1px solid var(--accent-color);
+        }
+        .btn-send-comment {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .btn-send-comment:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Double Tap Heart Animation */
+        .double-tap-heart {
+            position: absolute;
+            transform: translate(-50%, -50%) scale(0);
+            pointer-events: none;
+            z-index: 200;
+            animation: heart-bounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            filter: drop-shadow(0 0 10px rgba(255, 46, 255, 0.6));
+        }
+        @keyframes heart-bounce {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            30% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            40% { transform: translate(-50%, -50%) scale(0.9); }
+            80% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.5) translateY(-40px); opacity: 0; }
+        }
+
+        /* Modern iOS style Toast */
+        .wave-toast {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, -20px);
+            background: rgba(0, 240, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #000;
+            font-weight: 800;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.4);
+            pointer-events: none;
+            letter-spacing: -0.2px;
+        }
+        .wave-toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        /* Auto-scroll toggle style */
+        .wave-autoscroll-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .wave-autoscroll-toggle.active {
+            background: var(--accent-color);
+            color: #000;
+            border-color: transparent;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+        .wave-autoscroll-toggle:hover {
+            transform: scale(1.05);
+        }
+        .wave-autoscroll-toggle svg {
+            transition: transform 0.5s ease;
+        }
+        .wave-autoscroll-toggle.active svg {
+            transform: rotate(360deg);
+        }
+        @media (max-width: 1024px) {
+            .wave-autoscroll-toggle {
+                top: 30px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                border-radius: 50%;
+                justify-content: center;
+                background: rgba(26, 26, 26, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            .wave-autoscroll-toggle span {
+                display: none;
+            }
+            .wave-autoscroll-toggle svg {
+                margin-right: 0 !important;
+                width: 18px;
+                height: 18px;
+            }
+            .wave-back {
+                top: 30px;
+                left: 20px;
+            }
+            .wave-logo {
+                top: 35px;
+            }
+            .pc-nav-tips {
+                display: none;
+            }
+        }
+        /* Share Modal styling */
+        .share-options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 10px 20px;
+        }
+        .share-option-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        .share-option-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        .share-option-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+        .share-option-item:hover .share-option-icon {
+            background: var(--accent-color);
+            color: #000;
+        }
+        .share-option-item:hover .share-option-icon[style*="color: #2EA6DA"] {
+            background: #2EA6DA !important;
+            color: #fff !important;
+        }
+        .share-option-item:hover .share-option-icon[style*="color: #0077FF"] {
+            background: #0077FF !important;
+            color: #fff !important;
+        }
+        .share-option-item span {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-bg-blur" id="bg-blur"></div>
+    <a href="index.html" class="wave-back">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </a>
+    
+    <button class="wave-autoscroll-toggle" id="autoscroll-toggle" onclick="toggleAutoscroll()">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="margin-right: 6px;"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 1 1 21.306 8H18.5M20 9h-4"/></svg>
+        <span>Автопрокрутка: Выкл</span>
+    </button>
+
+    <div class="wave-logo">
+        <svg viewBox="0 0 100 100" width="28" fill="var(--accent-color)">
+            <polygon points="20,10 80,50 20,90" />
+        </svg>
+        ВОЛНА
+    </div>
+
+    <div class="pc-nav-tips">
+        <div class="key-tip" onclick="navigateWave('prev')">
+            <span class="key-icon">↑</span>
+            <span>Предыдущий</span>
+        </div>
+        <div class="key-tip" onclick="navigateWave('next')">
+            <span class="key-icon">↓</span>
+            <span>Следующий</span>
+        </div>
+    </div>
+
+    <div class="sheet-overlay" id="sheet-overlay" onclick="closeSheet()"></div>
+    
+    <!-- Description Modal -->
+    <div class="bottom-sheet" id="bottom-sheet">
+        <div class="sheet-header">
+            <div class="sheet-title" id="sheet-title">Описание</div>
+            <div class="sheet-close" onclick="closeSheet()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </div>
+        </div>
+        <div class="sheet-content" id="sheet-content"></div>
+        <div class="sheet-footer" style="padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; display: flex; justify-content: center; width: 100%;">
+             <button class="btn-watch-now" id="sheet-watch-btn" style="width: 100%; justify-content: center;" onclick="location.href='movie-details.html?autoplay=true'">
+                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                 Смотреть фильм
+             </button>
+        </div>
+    </div>
+
+    <!-- Comments Modal -->
+    <div class="bottom-sheet" id="comments-sheet">
+        <div class="sheet-header">
+            <div class="sheet-title">Комментарии <span style="color: #666; font-size: 14px; font-weight: 500;">842</span></div>
+            <div class="sheet-close" onclick="closeSheet()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </div>
+        </div>
+        <div class="sheet-content">
+            <div class="comments-list" id="comments-list">
+                <div class="comment-item">
+                    <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=1"></div>
+                    <div class="comment-body">
+                        <div class="comment-user">Киноман2026</div>
+                        <div class="comment-text">Это просто шедевр! Обожаю этот момент, музыка Циммера до мурашек.</div>
+                        <div class="comment-meta"><span class="reply-btn" onclick="replyTo('Киноман2026', this)">Ответить</span> <span>2ч назад</span></div>
+                        
+                        <div class="replies-container" id="replies-1" style="display: none;">
+                            <div class="comment-item reply-item">
+                                <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=4"></div>
+                                <div class="comment-body">
+                                    <div class="comment-user">Max_Power</div>
+                                    <div class="comment-text">Согласен, один из лучших саундтреков!</div>
+                                    <div class="comment-meta"><span class="reply-btn" onclick="replyTo('Max_Power', this)">Ответить</span> <span>1ч назад</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-show-replies" onclick="toggleReplies(this, 'replies-1')">
+                            <span class="line"></span>
+                            <span class="text">Посмотреть ответы (1)</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=2"></div>
+                    <div class="comment-body">
+                        <div class="comment-user">Алексей С.</div>
+                        <div class="comment-text">Когда уже выйдет продолжение? Слышал, что съемки уже начались.</div>
+                        <div class="comment-meta"><span class="reply-btn" onclick="replyTo('Алексей С.', this)">Ответить</span> <span>5ч назад</span></div>
+                    </div>
+                </div>
+                <div class="comment-item">
+                    <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=3"></div>
+                    <div class="comment-body">
+                        <div class="comment-user">Elena_Star</div>
+                        <div class="comment-text">Смотрела уже 5 раз и каждый раз как в первый. Актерская игра на высоте!</div>
+                        <div class="comment-meta"><span class="reply-btn" onclick="replyTo('Elena_Star', this)">Ответить</span> <span>10ч назад</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-input-area">
+            <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=me"></div>
+            <input type="text" class="comment-input" placeholder="Добавьте комментарий..." id="comment-input">
+            <button class="btn-send-comment" onclick="sendComment()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="bottom-sheet" id="share-sheet">
+        <div class="sheet-header">
+            <div class="sheet-title">Поделиться видео</div>
+            <div class="sheet-close" onclick="closeSheet()">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </div>
+        </div>
+        <div class="sheet-content" style="padding: 20px 0;">
+            <div class="share-options-grid">
+                <div class="share-option-item" onclick="handleDownloadShare()">
+                    <div class="share-option-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    </div>
+                    <span>Скачать видео</span>
+                </div>
+                <div class="share-option-item" onclick="handleCopyLinkShare()">
+                    <div class="share-option-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                    </div>
+                    <span>Скопировать ссылку</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wave-container" id="wave-container">
+        <!-- Item 1 -->
+        <div class="wave-item">
+            <img class="wave-video-placeholder" src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="Video 1">
+            <div class="wave-overlay">
+                <div class="wave-movie-info">
+                    <h2 class="wave-movie-title">Новичок</h2>
+                    <p class="wave-movie-desc">Полицейский из Лос-Анджелеса Джон Нолан сталкивается с новыми вызовами в восьмом сезоне. Джон должен найти баланс между работой, личной жизнью и постоянными опасностями, которые подстерегают его на улицах города. Смотрите эксклюзивно на ВОЛНЕ.</p>
+                    <button class="btn-read-more" onclick="toggleDesc(this, true)">...еще</button>
+                    <br>
+                    <button class="btn-watch-now" onclick="location.href='movie-details.html?autoplay=true'">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Смотреть фильм
+                    </button>
+                </div>
+            </div>
+            <div class="wave-actions-right">
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <span>12.4K</span>
+                </div>
+                <div class="wave-action-btn" onclick="openComments()">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"/></svg>
+                    </div>
+                    <span>842</span>
+                </div>
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <span>Поделиться</span>
+                </div>
+                <div class="wave-action-btn" onclick="toggleFullscreenVideo(this)">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                    </div>
+                    <span>Экран</span>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="wave-item">
+            <img class="wave-video-placeholder" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Video 2">
+            <div class="wave-overlay">
+                <div class="wave-movie-info">
+                    <h2 class="wave-movie-title">Интерстеллар</h2>
+                    <p class="wave-movie-desc">Кульминационная сцена в тессеракте. Один из самых захватывающих моментов в истории кино. Купер пытается передать данные своей дочери через время и пространство, используя гравитационные аномалии. Шедевр Кристофера Нолана, который заставляет задуматься о любви, времени и нашем месте во вселенной. Этот фильм получил множество наград за визуальные эффекты и саундтрек Ханса Циммера, который стал культовым. Интерстеллар — это не просто фантастика, это глубокая драма о человеческих чувствах и стремлении к неизведанному. История о том, как отец готов преодолеть миллионы световых лет ради обещания, данного дочери.</p>
+                    <button class="btn-read-more" onclick="toggleDesc(this, true)">...читать полностью</button>
+                    <br>
+                    <button class="btn-watch-now" onclick="location.href='movie-details.html?autoplay=true'">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Смотреть фильм
+                    </button>
+                </div>
+            </div>
+            <div class="wave-actions-right">
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <span>45K</span>
+                </div>
+                <div class="wave-action-btn" onclick="openComments()">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"/></svg>
+                    </div>
+                    <span>2.1K</span>
+                </div>
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <span>Поделиться</span>
+                </div>
+                <div class="wave-action-btn" onclick="toggleFullscreenVideo(this)">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                    </div>
+                    <span>Экран</span>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="wave-item">
+            <img class="wave-video-placeholder" src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=2059&auto=format&fit=crop" alt="Video 3">
+            <div class="wave-overlay">
+                <div class="wave-movie-info">
+                    <h2 class="wave-movie-title">Начало</h2>
+                    <p class="wave-movie-desc">Мир снов, где время течет иначе. Исследуйте глубины подсознания вместе с Коббом и его командой в этом интеллектуальном боевике. Погрузитесь в реальность, где границы возможного стерты.</p>
+                    <button class="btn-read-more" onclick="toggleDesc(this, true)">...еще</button>
+                    <br>
+                    <button class="btn-watch-now" onclick="location.href='movie-details.html?autoplay=true'">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Смотреть фильм
+                    </button>
+                </div>
+            </div>
+            <div class="wave-actions-right">
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <span>32K</span>
+                </div>
+                <div class="wave-action-btn" onclick="openComments()">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10z"/></svg>
+                    </div>
+                    <span>1.5K</span>
+                </div>
+                <div class="wave-action-btn">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+                    </div>
+                    <span>Поделиться</span>
+                </div>
+                <div class="wave-action-btn" onclick="toggleFullscreenVideo(this)">
+                    <div class="wave-action-icon">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                    </div>
+                    <span>Экран</span>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span>Главная</span>
+        </a>
+        <a href="search.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <span>Поиск</span>
+        </a>
+        <a href="wave.html" class="mobile-nav-item active nav-wave">
+            <div class="nav-icon-wrapper">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <span>Волна</span>
+        </a>
+        <a href="favorites.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Избранное</span>
+        </a>
+        <a href="profile.html" class="mobile-nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Профиль</span>
+        </a>
+    </nav>
+
+    <script>
+        const items = document.querySelectorAll('.wave-item');
+        const container = document.getElementById('wave-container');
+        const bgBlur = document.getElementById('bg-blur');
+        
+        let autoscrollEnabled = false;
+
+        function navigateWave(direction) {
+            const itemHeight = window.innerHeight;
+            if (direction === 'next') {
+                container.scrollBy({ top: itemHeight, behavior: 'smooth' });
+            } else if (direction === 'prev') {
+                container.scrollBy({ top: -itemHeight, behavior: 'smooth' });
+            }
+        }
+
+        function toggleAutoscroll() {
+            autoscrollEnabled = !autoscrollEnabled;
+            const btn = document.getElementById('autoscroll-toggle');
+            if (autoscrollEnabled) {
+                btn.classList.add('active');
+                btn.querySelector('span').innerText = 'Автопрокрутка: Вкл';
+                showToast("Автопрокрутка включена!");
+            } else {
+                btn.classList.remove('active');
+                btn.querySelector('span').innerText = 'Автопрокрутка: Выкл';
+                showToast("Автопрокрутка выключена");
+            }
+        }
+
+        function showToast(message) {
+            const existingToast = document.querySelector('.wave-toast');
+            if (existingToast) existingToast.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'wave-toast';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 50);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 2500);
+        }
+        
+        function toggleDesc(btn, isLong = false) {
+            const desc = btn.previousElementSibling;
+            const title = desc.previousElementSibling.innerText;
+            const watchBtn = btn.nextElementSibling.nextElementSibling;
+            const watchUrl = watchBtn ? watchBtn.getAttribute('onclick') : "location.href='movie-details.html?autoplay=true'";
+            
+            if (isLong) {
+                // Open Modal
+                document.getElementById('sheet-title').innerText = title;
+                document.getElementById('sheet-content').innerText = desc.innerText;
+                document.getElementById('sheet-watch-btn').setAttribute('onclick', watchUrl);
+                document.getElementById('bottom-sheet').classList.add('active');
+                document.getElementById('sheet-overlay').classList.add('active');
+            } else {
+                // Inline toggle
+                desc.classList.toggle('expanded');
+                btn.innerText = desc.classList.contains('expanded') ? 'Свернуть' : '...еще';
+            }
+        }
+
+        let replyTarget = null;
+
+        function replyTo(username, btn) {
+            replyTarget = btn.closest('.comment-item');
+            const input = document.getElementById('comment-input');
+            input.placeholder = `Ответ пользователю @${username}...`;
+            input.value = `@${username} `;
+            input.focus();
+        }
+
+        function openComments() {
+            document.getElementById('comments-sheet').classList.add('active');
+            document.getElementById('sheet-overlay').classList.add('active');
+        }
+
+        function closeSheet() {
+            document.getElementById('bottom-sheet').classList.remove('active');
+            document.getElementById('comments-sheet').classList.remove('active');
+            document.getElementById('share-sheet').classList.remove('active');
+            document.getElementById('sheet-overlay').classList.remove('active');
+        }
+
+        function sendComment() {
+            const input = document.getElementById('comment-input');
+            const list = document.getElementById('comments-list');
+            
+            if (input.value.trim() === '') return;
+
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+            
+            if (replyTarget) {
+                newComment.style.marginLeft = '40px'; // Indent for replies
+                newComment.style.marginTop = '10px';
+                newComment.style.borderLeft = '2px solid rgba(255,255,255,0.1)';
+                newComment.style.paddingLeft = '15px';
+            }
+
+            newComment.innerHTML = `
+                <div class="comment-avatar"><img src="https://i.pravatar.cc/100?u=me"></div>
+                <div class="comment-body">
+                    <div class="comment-user">Вы</div>
+                    <div class="comment-text">${input.value}</div>
+                    <div class="comment-meta"><span class="reply-btn" onclick="replyTo('Вы', this)">Ответить</span> <span>Только что</span></div>
+                </div>
+            `;
+            
+            if (replyTarget) {
+                replyTarget.after(newComment);
+            } else {
+                list.prepend(newComment);
+                list.scrollTop = 0;
+            }
+            
+            input.value = '';
+            input.placeholder = 'Добавьте комментарий...';
+            replyTarget = null;
+        }
+
+        function toggleReplies(btn, containerId) {
+            const container = document.getElementById(containerId);
+            const isHidden = container.style.display === 'none';
+            container.style.display = isHidden ? 'block' : 'none';
+            btn.querySelector('.text').innerText = isHidden ? 'Скрыть ответы' : 'Посмотреть ответы (1)';
+        }
+
+        // Like system interaction
+        function toggleLike(btn) {
+            const icon = btn.querySelector('.wave-action-icon');
+            const textSpan = btn.querySelector('span');
+            
+            btn.classList.toggle('liked');
+            if (btn.classList.contains('liked')) {
+                icon.style.color = '#FF2EFF';
+                icon.style.background = 'rgba(255, 46, 255, 0.2)';
+                icon.style.borderColor = '#FF2EFF';
+                let count = parseFloat(textSpan.innerText);
+                if (textSpan.innerText.includes('K')) {
+                    count = (count + 0.1).toFixed(1) + 'K';
+                } else {
+                    count = count + 1;
+                }
+                textSpan.innerText = count;
+                showToast("Добавлено в избранное!");
+            } else {
+                icon.style.color = 'white';
+                icon.style.background = 'rgba(255, 255, 255, 0.15)';
+                icon.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                let count = parseFloat(textSpan.innerText);
+                if (textSpan.innerText.includes('K')) {
+                    count = (count - 0.1).toFixed(1) + 'K';
+                } else {
+                    count = count - 1;
+                }
+                textSpan.innerText = count;
+            }
+        }
+
+        // Like button tap trigger
+        document.querySelectorAll('.wave-actions-right .wave-action-btn:first-child').forEach(btn => {
+            btn.style.cursor = 'pointer';
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleLike(btn);
+            });
+        });
+
+        // Share button triggers
+        let activeShareUrl = "";
+        let activeShareTitle = "";
+
+        function openShareModal(btn) {
+            const index = Math.round(container.scrollTop / window.innerHeight);
+            const currentItem = items[index];
+            const title = currentItem ? currentItem.querySelector('.wave-movie-title').innerText : "Фильм";
+            
+            activeShareUrl = window.location.origin + window.location.pathname + "?item=" + index;
+            activeShareTitle = `Смотрю фильм «${title}» в онлайн-кинотеатре ВОЛНА! Присоединяйся!`;
+
+            document.getElementById('share-sheet').classList.add('active');
+            document.getElementById('sheet-overlay').classList.add('active');
+        }
+
+        function handleCopyLinkShare() {
+            navigator.clipboard.writeText(activeShareUrl);
+            showToast("Ссылка успешно скопирована!");
+            closeSheet();
+        }
+
+        function handleDownloadShare() {
+            const index = Math.round(container.scrollTop / window.innerHeight);
+            const currentItem = items[index];
+            const imgSrc = currentItem ? currentItem.querySelector('.wave-video-placeholder').src : "";
+            
+            if (imgSrc) {
+                const a = document.createElement('a');
+                a.href = imgSrc;
+                // Force download filename
+                a.download = `wave-video-${index + 1}.jpg`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                showToast("Скачивание началось!");
+            } else {
+                showToast("Ошибка при скачивании");
+            }
+            closeSheet();
+        }
+
+        document.querySelectorAll('.wave-actions-right .wave-action-btn').forEach(btn => {
+            if (btn.querySelector('span') && btn.querySelector('span').innerText === 'Поделиться') {
+                btn.style.cursor = 'pointer';
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openShareModal(btn);
+                });
+            }
+        });
+
+        // Fullscreen reels button trigger
+        function toggleFullscreenVideo(btn) {
+            const item = btn.closest('.wave-item');
+            if (!document.fullscreenElement) {
+                if (item.requestFullscreen) {
+                    item.requestFullscreen();
+                } else if (item.webkitRequestFullscreen) {
+                    item.webkitRequestFullscreen();
+                } else if (item.msRequestFullscreen) {
+                    item.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Double tap gesture
+        document.querySelectorAll('.wave-item').forEach(item => {
+            let lastTap = 0;
+            item.addEventListener('click', (e) => {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 300 && tapLength > 0) {
+                    handleDoubleTap(item, e);
+                }
+                lastTap = currentTime;
+            });
+        });
+
+        function handleDoubleTap(item, e) {
+            const likeBtn = item.querySelector('.wave-actions-right .wave-action-btn:first-child');
+            if (likeBtn && !likeBtn.classList.contains('liked')) {
+                toggleLike(likeBtn);
+            }
+
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const heart = document.createElement('div');
+            heart.className = 'double-tap-heart';
+            heart.style.left = `${x}px`;
+            heart.style.top = `${y}px`;
+            heart.innerHTML = `<svg width="80" height="80" fill="#FF2EFF" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+            item.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 800);
+        }
+
+        function updateProgress() {
+            const currentItemIndex = Math.round(container.scrollTop / window.innerHeight);
+            const currentItem = items[currentItemIndex];
+            if (!currentItem) return;
+
+            const progressBar = currentItem.querySelector('.progress-bar-fill');
+            
+            // Update background blur
+            const imgSrc = currentItem.querySelector('.wave-video-placeholder').src;
+            bgBlur.style.backgroundImage = `url(${imgSrc})`;
+
+            // This is just a visual simulation
+            let width = 0;
+            if (window.activeInterval) clearInterval(window.activeInterval);
+            
+            window.activeInterval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(window.activeInterval);
+                    if (autoscrollEnabled) {
+                        navigateWave('next');
+                    }
+                } else {
+                    width += 0.5;
+                    progressBar.style.width = width + '%';
+                }
+            }, 50);
+        }
+
+        container.addEventListener('scroll', () => {
+            // Reset all progress bars on scroll
+            document.querySelectorAll('.progress-bar-fill').forEach(pb => pb.style.width = '0%');
+            // Start progress for the visible item after a small delay
+            clearTimeout(window.scrollTimeout);
+            window.scrollTimeout = setTimeout(updateProgress, 150);
+        });
+
+        // Keyboard navigation with input check
+        window.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+            const itemHeight = window.innerHeight;
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                container.scrollBy({ top: itemHeight, behavior: 'smooth' });
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                container.scrollBy({ top: -itemHeight, behavior: 'smooth' });
+            }
+        });
+
+        // Start for the first item
+        updateProgress();
+    </script>
+</body>
+</html>
